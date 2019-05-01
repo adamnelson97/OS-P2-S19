@@ -79,7 +79,7 @@ void Simulation::handle_page_fault(Process*& process, size_t page, size_t frame,
   }
   process->page_faults++;
   bool any_present = false;
-  if (flags.strategy == ReplacementStrategy::LRU) {
+  if (flags.strategy == ReplacementStrategy::LRU) { // Least Recently Used
   	for (size_t i = 0; i < process->page_table.rows.size(); i++) {
   		if (process->page_table.rows[page].present) {
         any_present = true;
@@ -100,7 +100,7 @@ void Simulation::handle_page_fault(Process*& process, size_t page, size_t frame,
       main_memory[process->page_table.rows[page].frame].set_page(process, page);
 	  }
   }
-  else {
+  else { // First In, First Out (Default)
   	for (size_t i = 0; i < process->page_table.rows.size(); i++) {
   		if (process->page_table.rows[page].present) {
         any_present = true;

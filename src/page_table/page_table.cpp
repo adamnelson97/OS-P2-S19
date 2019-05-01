@@ -40,7 +40,7 @@ size_t PageTable::get_least_recently_used_page() const {
   size_t index = 0;
   Row recent = rows[0]; // Initial row for comparisons
   for (int i = 0; i < rows.size(); i++) {
-  	if (rows[i].present && rows[i].last_accessed_at < recent.last_accessed_at) {
+  	if (rows[i].present && (rows[i].last_accessed_at < recent.last_accessed_at)) {
   		index = i;
   		recent = rows[i];
   	}
