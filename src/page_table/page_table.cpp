@@ -37,13 +37,16 @@ size_t PageTable::get_oldest_page() const {
 
 
 size_t PageTable::get_least_recently_used_page() const {
-  size_t index = 0;
-  Row recent = rows[0]; // Initial row for comparisons
+  size_t lowest_index = 0;
+  bool page_found = false;
+
   for (int i = 0; i < rows.size(); i++) {
-  	if (rows[i].present && (rows[i].last_accessed_at < recent.last_accessed_at)) {
-  		index = i;
-  		recent = rows[i];
-  	}
+    if (!page_found && rows[i].present) {
+      lowest_index = i;
+      page_found = true;
+    } else if (rows[i].present && rows[i].last_accessed_at < rows[lowest_index].last_accessed_at) {
+      lowest_index = i;
+    }
   }
-  return index;
+  return lowest_index;
 }

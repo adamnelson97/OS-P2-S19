@@ -36,6 +36,8 @@ public:
     for (size_t i = 0; i < NUM_FRAMES; i++){
       this->main_memory[i] = main_memory[i];
     }
+    available_frames = flags.max_frames;
+    frame_index = 0;
   }
 // PUBLIC API METHODS
 public:
@@ -58,9 +60,11 @@ private:
    * Handles a page fault, attempting to load the given page for the given
    * process into memory.
    */
-  void handle_page_fault(Process*& process, size_t page, size_t frame, size_t time);
+  void handle_page_fault(Process*& process, size_t page);
 
 
 // INSTANCE VARIABLES
 private:
+  int available_frames;
+  int frame_index;
 };
