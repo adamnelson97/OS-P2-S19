@@ -24,11 +24,12 @@ void Simulation::run() {
   	if (main_memory[j].contents) used_frames++;
   }
   for (size_t k = 0; k < prcs_table.size(); k++) {
-  	cout << "PROCESS\t" << prcs_table[k]->process_id 
+  	cout << "PROCESS " << prcs_table[k]->process_id 
   	<< "\tACCESSES: " << prcs_table[k]->memory_accesses 
   	<< "\tPAGE FAULTS: " << prcs_table[k]->page_faults 
   	<< "\tFAULT RATE: " << prcs_table[k]->get_fault_percent() 
-  	<< "\tRSS: " << prcs_table[k]->get_rss() << endl;
+  	<< "\tRSS: " << prcs_table[k]->get_rss() 
+    << "\tPROC. SIZE: " << prcs_table[k]->size() << endl;
   }
   for (size_t l = 0; l < prcs_table.size(); l++) {
   	page_faults += prcs_table[l]->page_faults;

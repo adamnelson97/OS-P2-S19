@@ -29,7 +29,7 @@ int main(int argc, char** argv) {
     ifstream in(flags.filename);
     read_input_files(in, PID_vec, process_vec, vir_mem_accesses, main_memory, flags.max_frames);
     Simulation sim(flags,process_vec,vir_mem_accesses,main_memory);
-    cout << "Running simulation...\n" << endl;
+    cout << "\nRunning simulation...\n" << endl;
     sim.run();
     return EXIT_SUCCESS;
   }
@@ -75,6 +75,7 @@ void read_input_files(ifstream &in, vector<int>& PID_vec, vector<Process*>& proc
     string binary;
     in >> process_id >> binary;
     if (binary.empty()) break;
+    cout << "Process " << process_id << " accesses " << binary << endl;
     VirtualAddress virt = VirtualAddress::from_string(process_id, binary);
     vir_mem_accesses.push_back(virt);
   }
