@@ -5,6 +5,8 @@ A simulation of a trival OS memory manager.
 Adam Nelson
 
 
+
+
 files:
 
 flag_parser.cpp : processes the command-line flags for the simulator
@@ -27,11 +29,15 @@ main.cpp : reads the input data and calls the simulator to perform on said data
 
 
 
+
 Each of the above files (with the exception of main) also has a .h file with it.
 
 
 
+
 Approx. number of hours spent: 15
+
+
 
 Belady's Anomaly: the concept that increasing the number of frames can increase the number of page faults. This is because the most frequent pages are often the oldest pages, which have a higher chance of being swapped out when using FIFO.
 
@@ -46,5 +52,7 @@ $ ./mem-sim -f 2 inputs/belady // page faults
 $ ./mem-sim -f 3 inputs/belady // page faults
 
 $ ./mem-sim -f 4 inputs/belady // page faults
+
+
 
 The belady file contains 5 pages from process_1, for a total of 12 accesses using the page order [1,2,3,4,1,2,5,1,2,3,4,5]
