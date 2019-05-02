@@ -25,8 +25,8 @@ Belady's Anomaly is the concept that increasing the number of frames can increas
 
 To see an example of this, run:
 
-$ ./mem-sim -f 3 inputs/belady1    // 9 page faults
+$ ./mem-sim -f 3 inputs/belady    // 9 page faults
 
-$ ./mem-sim -f 4 inputs/belady2    // 10 page faults
+$ ./mem-sim -f 4 inputs/belady    // 10 page faults
 
 The belady file contains 5 pages from process_1, for a total of 12 accesses using the page order [1,2,3,4,1,2,5,1,2,3,4,5].
